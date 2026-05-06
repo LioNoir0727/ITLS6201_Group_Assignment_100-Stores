@@ -1,0 +1,11 @@
+{
+  "total_generated_stores": 100,
+  "stores_inside_metropolitan_sydney_boundary": 100,
+  "ring_counts": {
+    "Inner": 25,
+    "Middle": 40,
+    "Outer": 35
+  },
+  "eligible_sa2s_used": 96,
+  "warning": ""
+}
