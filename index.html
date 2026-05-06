@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sydney Store Network Blank Map</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIINfQb8PwWZ6VfKEqGkGPNHGJY7n2+f6A="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Map controls">
+      <header class="sidebar-header">
+        <h1>Sydney Store Network Blank Map</h1>
+        <p>Blank planning map for generating 100 representative grocery store locations.</p>
+      </header>
+
+      <section class="panel">
+        <h2>Layer Controls</h2>
+        <label class="layer-toggle" for="metroBoundaryToggle">
+          <input id="metroBoundaryToggle" type="checkbox" checked>
+          <span>Show Metropolitan Sydney analysis area</span>
+        </label>
+        <label class="layer-toggle" for="greaterSydneyToggle">
+          <input id="greaterSydneyToggle" type="checkbox" checked>
+          <span>Show Greater Sydney context boundary</span>
+        </label>
+        <label class="layer-toggle" for="sa3Toggle">
+          <input id="sa3Toggle" type="checkbox" checked>
+          <span>Show SA3 boundaries</span>
+        </label>
+        <label class="layer-toggle" for="sa2Toggle">
+          <input id="sa2Toggle" type="checkbox">
+          <span>Show SA2 boundaries</span>
+        </label>
+        <label class="layer-toggle" for="sa2DensityToggle">
+          <input id="sa2DensityToggle" type="checkbox" checked>
+          <span>Show SA2 population density</span>
+        </label>
+        <label class="layer-toggle" for="majorRoadsToggle">
+          <input id="majorRoadsToggle" type="checkbox" checked>
+          <span>Show key freight roads</span>
+        </label>
+        <label class="layer-toggle" for="generatedStoresToggle">
+          <input id="generatedStoresToggle" type="checkbox" checked>
+          <span>Show generated stores</span>
+        </label>
+      </section>
+
+      <section class="panel panel-hidden">
+        <h2>Map Summary</h2>
+        <div class="summary-grid">
+          <div class="summary-row">
+            <span>SA2 features loaded</span>
+            <strong id="sa2FeatureCount">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>SA3 features loaded</span>
+            <strong id="sa3FeatureCount">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Major road features loaded</span>
+            <strong id="majorRoadFeatureCount">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Generated stores loaded</span>
+            <strong id="generatedStoreCount">0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Population density data</span>
+            <strong id="densityLoadStatus">Loading</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-hidden">
+        <h2>Load Status</h2>
+        <div id="metroBoundaryStatus" class="status-message">Loading Metropolitan Sydney boundary...</div>
+        <div id="boundaryStatus" class="status-message">Loading Greater Sydney boundary...</div>
+        <div id="sa3Status" class="status-message">Loading SA3 boundaries...</div>
+        <div id="sa2Status" class="status-message muted">SA2 boundaries are off by default.</div>
+        <div id="densityStatus" class="status-message">Loading SA2 population density...</div>
+        <div id="roadsStatus" class="status-message">Loading major roads...</div>
+        <div id="storesStatus" class="status-message">Loading generated stores...</div>
+      </section>
+
+      <section class="panel">
+        <h2>Legend</h2>
+        <div class="legend-block">
+          <h3>Generated Stores</h3>
+          <ul class="legend-list">
+            <li><span class="store-dot inner"></span>Inner metro: 0-10 km</li>
+            <li><span class="store-dot middle"></span>Middle metro: 10-25 km</li>
+            <li><span class="store-dot outer"></span>Outer metro: 25-45 km</li>
+          </ul>
+        </div>
+
+        <div class="legend-block">
+          <h3>SA2 Population Density</h3>
+          <ul class="legend-list">
+            <li><span class="swatch" style="background:#fff7ed"></span>Very low</li>
+            <li><span class="swatch" style="background:#fed7aa"></span>Low</li>
+            <li><span class="swatch" style="background:#fdba74"></span>Medium</li>
+            <li><span class="swatch" style="background:#fb923c"></span>High</li>
+            <li><span class="swatch" style="background:#ea580c"></span>Very high</li>
+          </ul>
+        </div>
+
+        <div class="legend-block">
+          <h3>Roads and Boundaries</h3>
+          <ul class="legend-list">
+            <li><span class="line key-road"></span>Key freight roads</li>
+            <li><span class="metro-boundary"></span>Metropolitan Sydney analysis area</li>
+            <li><span class="fill-boundary"></span>Greater Sydney context boundary</li>
+            <li><span class="line dark"></span>SA3 boundary</li>
+          </ul>
+        </div>
+      </section>
+    </aside>
+
+    <main class="map-panel">
+      <div id="map" aria-label="Greater Sydney blank planning map"></div>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="script.js"></script>
+</body>
+</html>

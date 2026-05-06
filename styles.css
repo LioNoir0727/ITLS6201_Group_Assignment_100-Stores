@@ -1,0 +1,530 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+  background: #f3f6fb;
+}
+
+body {
+  overflow: hidden;
+}
+
+.app-shell {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 340px;
+  flex: 0 0 340px;
+  height: 100vh;
+  padding: 26px 24px;
+  overflow-y: auto;
+  border-right: 1px solid #d9e2ec;
+  background: #ffffff;
+  box-shadow: 4px 0 18px rgba(15, 23, 42, 0.08);
+  z-index: 10;
+}
+
+.sidebar-header h1 {
+  margin: 0 0 12px;
+  color: #0f2f4a;
+  font-size: 25px;
+  line-height: 1.18;
+}
+
+.sidebar-header p,
+.panel p {
+  margin: 0;
+  color: #526173;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.note-text {
+  margin-top: 12px !important;
+  padding: 10px 12px;
+  border-left: 3px solid #10b981;
+  border-radius: 6px;
+  background: #f0fdf4;
+  color: #365245 !important;
+}
+
+.panel {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.panel-hidden {
+  display: none;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.layer-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #334155;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.layer-toggle + .layer-toggle {
+  margin-top: 10px;
+}
+
+.layer-toggle input {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  accent-color: #2563eb;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 7px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #edf2f7;
+  color: #526173;
+  font-size: 14px;
+}
+
+.summary-row:last-child {
+  border-bottom: 0;
+}
+
+.summary-row strong {
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.validation-warning {
+  margin: 10px 0 0;
+  padding: 9px 10px;
+  border-left: 4px solid #f59e0b;
+  border-radius: 6px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.validation-warning.ok {
+  border-left-color: #10b981;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status-message {
+  margin-top: 8px;
+  padding: 9px 11px;
+  border-left: 4px solid #2563eb;
+  border-radius: 5px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.status-message.error {
+  border-left-color: #dc2626;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.status-message.muted {
+  border-left-color: #94a3b8;
+  background: #f8fafc;
+  color: #64748b;
+}
+
+.legend-block + .legend-block {
+  margin-top: 16px;
+}
+
+.legend-block h3 {
+  margin: 0 0 8px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.legend-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  color: #526173;
+  font-size: 13px;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.legend-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swatch {
+  width: 24px;
+  height: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.line {
+  width: 34px;
+  height: 0;
+  border-top: 4px solid #94a3b8;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.line.red {
+  border-color: #fca5a5;
+  border-top-width: 3px;
+}
+
+.line.orange {
+  border-color: #fdba74;
+  border-top-width: 3px;
+}
+
+.line.yellow {
+  border-color: #fde68a;
+  border-top-width: 2px;
+}
+
+.line.key-road {
+  border-color: #475569;
+  border-top-width: 2px;
+}
+
+.line.dark {
+  border-color: #64748b;
+  border-top-width: 1px;
+}
+
+.line.light {
+  border-color: #94a3b8;
+  border-top-width: 1px;
+}
+
+.store-dot {
+  width: 13px;
+  height: 13px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(15, 23, 42, 0.12);
+  flex: 0 0 auto;
+}
+
+.store-dot.inner {
+  background: #2563eb;
+}
+
+.store-dot.middle {
+  background: #10b981;
+}
+
+.store-dot.outer {
+  background: #8b5cf6;
+}
+
+.zone-swatch {
+  width: 24px;
+  height: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.zone-swatch.inner {
+  background: rgba(37, 99, 235, 0.22);
+  border-color: #2563eb;
+}
+
+.zone-swatch.middle {
+  background: rgba(5, 150, 105, 0.18);
+  border-color: #059669;
+}
+
+.zone-swatch.outer {
+  background: rgba(124, 58, 237, 0.14);
+  border-color: #7c3aed;
+}
+
+.zone-label {
+  padding: 4px 7px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #334155;
+  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.14);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.store-marker-shadow {
+  filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.28));
+}
+
+.fill-boundary {
+  width: 24px;
+  height: 14px;
+  border: 2px solid rgba(148, 163, 184, 0.75);
+  border-radius: 4px;
+  background: transparent;
+  flex: 0 0 auto;
+}
+
+.metro-boundary {
+  width: 24px;
+  height: 14px;
+  border: 3px solid rgba(37, 99, 235, 0.85);
+  border-radius: 4px;
+  background: rgba(37, 99, 235, 0.06);
+  flex: 0 0 auto;
+}
+
+.map-panel {
+  position: relative;
+  flex: 1 1 auto;
+  height: 100vh;
+  min-width: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: #e7edf5;
+}
+
+/*
+  Leaflet layout fallback:
+  If the CDN Leaflet stylesheet is slow or blocked, these essential rules keep
+  map tiles and panes positioned correctly instead of appearing as fragments.
+*/
+.leaflet-container {
+  overflow: hidden;
+  position: relative;
+  background: #dddddd;
+  outline-offset: 1px;
+}
+
+.leaflet-pane,
+.leaflet-map-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-map-pane,
+.leaflet-tile-pane,
+.leaflet-overlay-pane,
+.leaflet-shadow-pane,
+.leaflet-marker-pane,
+.leaflet-tooltip-pane,
+.leaflet-popup-pane {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-container img.leaflet-tile,
+.leaflet-container .leaflet-tile,
+.leaflet-container img.leaflet-image-layer {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.leaflet-tile-container {
+  transform-origin: 0 0;
+}
+
+.leaflet-pane > svg,
+.leaflet-pane > canvas {
+  pointer-events: none;
+}
+
+.leaflet-interactive {
+  pointer-events: auto;
+}
+
+.leaflet-tile {
+  visibility: hidden;
+}
+
+.leaflet-tile-loaded {
+  visibility: inherit;
+}
+
+.leaflet-pane {
+  z-index: 400;
+}
+
+.leaflet-tile-pane {
+  z-index: 200;
+}
+
+.leaflet-overlay-pane {
+  z-index: 400;
+}
+
+.leaflet-shadow-pane {
+  z-index: 500;
+}
+
+.leaflet-marker-pane {
+  z-index: 600;
+}
+
+.leaflet-tooltip-pane {
+  z-index: 650;
+}
+
+.leaflet-popup-pane {
+  z-index: 700;
+}
+
+.leaflet-control {
+  position: relative;
+  z-index: 800;
+  pointer-events: auto;
+  float: left;
+  clear: both;
+}
+
+.leaflet-control-container .leaflet-control {
+  margin: 10px;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.leaflet-top {
+  top: 0;
+}
+
+.leaflet-bottom {
+  bottom: 0;
+}
+
+.leaflet-left {
+  left: 0;
+}
+
+.leaflet-right {
+  right: 0;
+}
+
+.leaflet-right .leaflet-control {
+  float: right;
+}
+
+.leaflet-control-zoom {
+  border: 0 !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+}
+
+.leaflet-control-attribution {
+  font-size: 11px;
+}
+
+.popup-title {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.popup-table {
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.popup-table td {
+  padding: 3px 10px 3px 0;
+  vertical-align: top;
+}
+
+.popup-table td:first-child {
+  color: #64748b;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-basis: auto;
+    height: auto;
+    max-height: 45vh;
+    border-right: 0;
+    border-bottom: 1px solid #d9e2ec;
+  }
+
+  .map-panel {
+    height: 55vh;
+  }
+}
